@@ -224,3 +224,8 @@ Then 관리자 시스템과 고객 앱에서 주문 상태가 '제조 중'으로
 
 **OrderBean** - 빠르고 간편한 커피 주문의 시작 ✨
 
+## To-Do List
+
+- TC
+- implementation
+- Refactoring
