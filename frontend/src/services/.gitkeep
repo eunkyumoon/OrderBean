@@ -1,0 +1,8 @@
+# Services directory
+# API service files will be placed here
+# - api.js
+# - menuService.js
+# - orderService.js
+# - authService.js
+# etc.
+

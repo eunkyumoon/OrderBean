@@ -1,0 +1,8 @@
+# Controllers directory
+# Request handlers will be placed here
+# - menuController.js
+# - orderController.js
+# - userController.js
+# - adminController.js
+# etc.
+

@@ -1,0 +1,7 @@
+# Migrations directory
+# Database migration files will be placed here
+# - 001_create_users_table.sql
+# - 002_create_menus_table.sql
+# - 003_create_orders_table.sql
+# etc.
+

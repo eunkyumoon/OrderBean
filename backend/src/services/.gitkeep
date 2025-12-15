@@ -1,0 +1,8 @@
+# Services directory
+# Business logic services will be placed here
+# - menuService.js
+# - orderService.js
+# - paymentService.js
+# - notificationService.js
+# etc.
+

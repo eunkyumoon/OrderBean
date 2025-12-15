@@ -1,0 +1,19 @@
+{
+  "name": "orderbean-frontend",
+  "version": "1.0.0",
+  "description": "OrderBean Frontend Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'Frontend dev server - to be configured'",
+    "build": "echo 'Frontend build - to be configured'",
+    "start": "echo 'Frontend start - to be configured'"
+  },
+  "keywords": [
+    "orderbean",
+    "coffee",
+    "ordering"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

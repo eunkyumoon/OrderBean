@@ -1,0 +1,29 @@
+{
+  "name": "orderbean",
+  "version": "1.0.0",
+  "description": "OrderBean - 바쁜 직장인들을 위한 간편 모바일 선주문 웹 서비스",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend & npm run dev --workspace=backend",
+    "install:all": "npm install && npm install --workspace=frontend && npm install --workspace=backend",
+    "migrate": "npm run migrate --workspace=backend"
+  },
+  "keywords": [
+    "orderbean",
+    "coffee",
+    "ordering",
+    "mobile",
+    "pre-order"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/OrderBean.git"
+  }
+}
+

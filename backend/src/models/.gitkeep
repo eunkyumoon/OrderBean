@@ -1,0 +1,9 @@
+# Models directory
+# Data models will be placed here
+# - User.js
+# - Menu.js
+# - Order.js
+# - Recipe.js
+# - Store.js
+# etc.
+

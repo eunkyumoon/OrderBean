@@ -1,0 +1,8 @@
+# Middleware directory
+# Express middleware will be placed here
+# - auth.js
+# - errorHandler.js
+# - validation.js
+# - logger.js
+# etc.
+

@@ -1,0 +1,19 @@
+{
+  "name": "orderbean-backend",
+  "version": "1.0.0",
+  "description": "OrderBean Backend API Server",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "echo 'Backend dev server - to be configured'",
+    "start": "echo 'Backend start - to be configured'",
+    "migrate": "echo 'Database migration - to be configured'"
+  },
+  "keywords": [
+    "orderbean",
+    "api",
+    "backend"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
