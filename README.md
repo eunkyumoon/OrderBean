@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/badge/version-v1.0-blue.svg)](https://github.com/yourusername/OrderBean)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Test Coverage](https://img.shields.io/badge/coverage-97.51%25-brightgreen.svg)](docs/TEST_COVERAGE.md)
 
 ## 📋 목차
 
@@ -226,6 +227,76 @@ Then 관리자 시스템과 고객 앱에서 주문 상태가 '제조 중'으로
 
 ## To-Do List
 
-- TC
-- implementation
-- Refactoring
+### 🔴 RED 단계 (테스트 작성 및 실행 - 실패 확인)
+- [x] 단위 테스트 작성 (50개 완료)
+- [x] 통합 테스트 작성 (19개 작성 완료, API 미구현으로 대기)
+- [ ] E2E 테스트 작성
+
+### 🟢 GREEN 단계 (최소한의 코드 작성 - 테스트 통과)
+
+#### 우선순위 1: Express API 레이어 구현
+- [ ] Express 서버 설정 및 초기화
+- [ ] 라우트 설정
+  - [ ] 인증 라우트 (`/api/v1/auth/*`)
+  - [ ] 메뉴 라우트 (`/api/v1/menus/*`)
+  - [ ] 주문 라우트 (`/api/v1/orders/*`)
+  - [ ] 레시피 라우트 (`/api/v1/recipes/*`)
+  - [ ] 관리자 라우트 (`/api/v1/admin/*`)
+- [ ] 컨트롤러 구현
+  - [ ] AuthController (회원가입, 로그인, 로그아웃)
+  - [ ] MenuController (메뉴 CRUD)
+  - [ ] OrderController (주문 생성, 조회, 취소)
+  - [ ] RecipeController (레시피 CRUD, 재주문)
+  - [ ] AdminController (주문 상태 관리, 통계)
+- [ ] 미들웨어 구현
+  - [ ] JWT 인증 미들웨어
+  - [ ] 에러 처리 미들웨어
+  - [ ] 요청 검증 미들웨어
+  - [ ] Rate Limiting 미들웨어
+- [ ] 통합 테스트 통과 (현재 19개 실패)
+  - [ ] 메뉴 API 테스트 통과 (8개)
+  - [ ] 주문 API 테스트 통과 (11개)
+
+#### 우선순위 2: 데이터베이스 연동
+- [ ] ORM 설정 (Sequelize/TypeORM 등)
+- [ ] 마이그레이션 구현
+  - [ ] Users 테이블
+  - [ ] Stores 테이블
+  - [ ] Menus 테이블
+  - [ ] Orders 테이블
+  - [ ] OrderItems 테이블
+  - [ ] Recipes 테이블
+  - [ ] 인덱스 생성
+- [ ] 서비스 레이어 DB 연동
+  - [ ] menuService DB 연동
+  - [ ] orderService DB 연동
+  - [ ] recipeService DB 연동
+  - [ ] paymentService DB 연동
+
+#### 우선순위 3: 프론트엔드 구현
+- [ ] 프론트엔드 프레임워크 설정 (React/Vue 등)
+- [ ] 컴포넌트 구현
+  - [ ] 메뉴 조회/검색 컴포넌트
+  - [ ] 주문 생성 컴포넌트 (커스터마이징 옵션 UI)
+  - [ ] 주문 내역 조회 컴포넌트
+  - [ ] 레시피 관리 컴포넌트
+  - [ ] 관리자 대시보드 컴포넌트
+- [ ] API 연동
+  - [ ] 인증 API 연동
+  - [ ] 메뉴 API 연동
+  - [ ] 주문 API 연동
+  - [ ] 레시피 API 연동
+- [ ] 모바일 반응형 디자인 적용
+
+#### 테스트 커버리지 개선
+- [ ] paymentService.js 테스트 추가
+  - [ ] `refundPayment` 함수 테스트 (현재 미커버, 목표: 90% 이상)
+- [ ] orderService.js 브랜치 커버리지 개선
+  - [ ] 에지 케이스 테스트 추가 (목표: Branches 85% 이상)
+- [ ] 전체 커버리지 98% 이상 유지
+
+### 🔵 REFACTOR 단계 (코드 개선)
+- [ ] 코드 리뷰 및 리팩토링
+- [ ] 성능 최적화
+- [ ] 보안 강화
+- [ ] 문서화 업데이트

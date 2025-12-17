@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "echo 'Backend dev server - to be configured'",
     "start": "echo 'Backend start - to be configured'",
-    "migrate": "echo 'Database migration - to be configured'"
+    "migrate": "echo 'Database migration - to be configured'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest __tests__/unit",
+    "test:integration": "jest __tests__/integration"
   },
   "keywords": [
     "orderbean",
@@ -14,6 +19,14 @@
     "backend"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
 
