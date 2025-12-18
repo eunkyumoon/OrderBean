@@ -1,0 +1,57 @@
+{
+  "summary": {
+    "total": {
+      "statements": 97.51,
+      "branches": 85.04,
+      "functions": 97.43,
+      "lines": 97.29
+    },
+    "files": {
+      "services/menuService.js": {
+        "statements": 100,
+        "branches": 82.75,
+        "functions": 100,
+        "lines": 100,
+        "uncoveredLines": [41, 42, 114, 118]
+      },
+      "services/orderService.js": {
+        "statements": 96.36,
+        "branches": 70.37,
+        "functions": 100,
+        "lines": 96.07,
+        "uncoveredLines": [146, 151]
+      },
+      "services/paymentService.js": {
+        "statements": 66.66,
+        "branches": 100,
+        "functions": 50,
+        "lines": 66.66,
+        "uncoveredLines": [32]
+      },
+      "services/recipeService.js": {
+        "statements": 100,
+        "branches": 93.33,
+        "functions": 100,
+        "lines": 100,
+        "uncoveredLines": [118]
+      },
+      "utils/orderUtils.js": {
+        "statements": 96.66,
+        "branches": 94.44,
+        "functions": 100,
+        "lines": 96.66,
+        "uncoveredLines": [66]
+      }
+    }
+  },
+  "testResults": {
+    "totalTests": 50,
+    "passedTests": 50,
+    "failedTests": 0,
+    "testSuites": 4,
+    "passedSuites": 4,
+    "failedSuites": 0
+  },
+  "lastUpdated": "2024-12-16"
+}
+
