@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorDisplay from './ErrorDisplay';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -14,14 +15,18 @@ class ErrorBoundary extends React.Component {
     console.error('Error caught by boundary:', error, errorInfo);
   }
 
+  handleRetry = () => {
+    this.setState({ hasError: false, error: null });
+  };
+
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '20px', textAlign: 'center' }}>
-          <h2>오류가 발생했습니다</h2>
-          <p>{this.state.error?.toString()}</p>
-          <button onClick={() => window.location.reload()}>새로고침</button>
-        </div>
+        <ErrorDisplay 
+          error={this.state.error} 
+          onRetry={this.handleRetry}
+          title="컴포넌트 오류가 발생했습니다"
+        />
       );
     }
 
