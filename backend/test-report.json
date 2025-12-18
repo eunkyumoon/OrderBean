@@ -1,0 +1,141 @@
+{
+  "project": "OrderBean",
+  "version": "1.0.0",
+  "reportDate": "2024-12-16",
+  "summary": {
+    "totalTests": 50,
+    "passedTests": 50,
+    "failedTests": 0,
+    "testSuites": 4,
+    "passedSuites": 4,
+    "failedSuites": 0,
+    "executionTime": "0.65s"
+  },
+  "coverage": {
+    "statements": 97.51,
+    "branches": 85.04,
+    "functions": 97.43,
+    "lines": 97.29
+  },
+  "testSuites": [
+    {
+      "name": "orderUtils.test.js",
+      "status": "passed",
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "coverage": {
+        "statements": 96.66,
+        "branches": 94.44,
+        "functions": 100,
+        "lines": 96.66
+      }
+    },
+    {
+      "name": "menuService.test.js",
+      "status": "passed",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "coverage": {
+        "statements": 100,
+        "branches": 82.75,
+        "functions": 100,
+        "lines": 100
+      }
+    },
+    {
+      "name": "orderService.test.js",
+      "status": "passed",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "coverage": {
+        "statements": 96.36,
+        "branches": 70.37,
+        "functions": 100,
+        "lines": 96.07
+      }
+    },
+    {
+      "name": "recipeService.test.js",
+      "status": "passed",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "coverage": {
+        "statements": 100,
+        "branches": 93.33,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "src/utils/orderUtils.js",
+      "coverage": {
+        "statements": 96.66,
+        "branches": 94.44,
+        "functions": 100,
+        "lines": 96.66,
+        "uncoveredLines": [66]
+      }
+    },
+    {
+      "path": "src/services/menuService.js",
+      "coverage": {
+        "statements": 100,
+        "branches": 82.75,
+        "functions": 100,
+        "lines": 100,
+        "uncoveredLines": [41, 42, 114, 118]
+      }
+    },
+    {
+      "path": "src/services/orderService.js",
+      "coverage": {
+        "statements": 96.36,
+        "branches": 70.37,
+        "functions": 100,
+        "lines": 96.07,
+        "uncoveredLines": [146, 151]
+      }
+    },
+    {
+      "path": "src/services/paymentService.js",
+      "coverage": {
+        "statements": 66.66,
+        "branches": 100,
+        "functions": 50,
+        "lines": 66.66,
+        "uncoveredLines": [32]
+      }
+    },
+    {
+      "path": "src/services/recipeService.js",
+      "coverage": {
+        "statements": 100,
+        "branches": 93.33,
+        "functions": 100,
+        "lines": 100,
+        "uncoveredLines": [118]
+      }
+    }
+  ],
+  "improvements": [
+    {
+      "file": "src/services/paymentService.js",
+      "priority": "high",
+      "issue": "refundPayment 함수 테스트 없음",
+      "target": "Statements 90% 이상"
+    },
+    {
+      "file": "src/services/orderService.js",
+      "priority": "medium",
+      "issue": "브랜치 커버리지 70.37%",
+      "target": "Branches 85% 이상"
+    }
+  ]
+}
+
