@@ -32,6 +32,14 @@
    - 모든 리포트 파일 목록
    - 리포트 생성 방법
 
+### 프런트엔드 관련 리포트
+
+6. **[프런트엔드 리팩토링 결과](FRONTEND_REFACTORING_REPORT.md)**
+   - 리팩토링 작업 결과 상세
+   - 생성/수정된 파일 목록
+   - 개선 효과 및 통계
+   - Before/After 코드 비교
+
 ## 📁 JSON 리포트
 
 - `backend/test-results.json` - Jest 테스트 결과 (JSON)
@@ -61,5 +69,9 @@ start coverage/lcov-report/index.html
 ---
 
 **마지막 업데이트**: 2024-12-16
+
+### 최근 리포트
+
+- **[프런트엔드 리팩토링 결과](FRONTEND_REFACTORING_REPORT.md)** - 높은 우선순위 리팩토링 작업 완료 (2024-12-16)
 
 

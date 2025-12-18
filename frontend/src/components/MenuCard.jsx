@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { CUSTOMIZATION_PRICES, CUSTOMIZATION_LABELS } from '../constants';
 import '../styles/App.css';
 
 const MenuCard = ({ menu, onAddToCart }) => {
@@ -42,7 +43,7 @@ const MenuCard = ({ menu, onAddToCart }) => {
             checked={extraShot}
             onChange={(e) => setExtraShot(e.target.checked)}
           />
-          샷 추가 (+500원)
+          {CUSTOMIZATION_LABELS.EXTRA_SHOT} (+{CUSTOMIZATION_PRICES.EXTRA_SHOT.toLocaleString()}원)
         </label>
         
         <label className="menu-card-option">
@@ -51,7 +52,7 @@ const MenuCard = ({ menu, onAddToCart }) => {
             checked={extraSyrup}
             onChange={(e) => setExtraSyrup(e.target.checked)}
           />
-          시럽 추가 (+0원)
+          {CUSTOMIZATION_LABELS.EXTRA_SYRUP} (+{CUSTOMIZATION_PRICES.EXTRA_SYRUP.toLocaleString()}원)
         </label>
       </div>
       

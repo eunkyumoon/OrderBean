@@ -5,25 +5,26 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ROUTES } from '../constants';
 import '../styles/App.css';
 
 const Header = () => {
   const location = useLocation();
-  const isOrderPage = location.pathname === '/' || location.pathname === '/menus';
-  const isAdminPage = location.pathname === '/admin';
+  const isOrderPage = location.pathname === ROUTES.HOME || location.pathname === ROUTES.MENUS;
+  const isAdminPage = location.pathname === ROUTES.ADMIN;
 
   return (
     <header className="header">
       <div className="header-logo">OrderBean - 커피 주문</div>
       <nav className="header-nav">
         <Link 
-          to="/" 
+          to={ROUTES.HOME} 
           className={`nav-button ${isOrderPage ? 'active' : ''}`}
         >
           주문하기
         </Link>
         <Link 
-          to="/admin" 
+          to={ROUTES.ADMIN} 
           className={`nav-button ${isAdminPage ? 'active' : ''}`}
         >
           관리자

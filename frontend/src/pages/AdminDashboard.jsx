@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import { ORDER_STATUS } from '../constants';
 import '../styles/App.css';
 
 const AdminDashboard = () => {
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
             date: '7월 31일 13:00',
             items: [{ name: '아메리카노(ICE)', quantity: 1 }],
             total: 4000,
-            status: '접수 대기'
+            status: ORDER_STATUS.PENDING
           }
         ]);
 
@@ -45,13 +46,13 @@ const AdminDashboard = () => {
 
   // 통계 계산
   const totalOrders = orders.length;
-  const receivedOrders = orders.filter(o => o.status === '접수').length;
-  const makingOrders = orders.filter(o => o.status === '제조 중').length;
-  const completedOrders = orders.filter(o => o.status === '제조 완료').length;
+  const receivedOrders = orders.filter(o => o.status === ORDER_STATUS.RECEIVED).length;
+  const makingOrders = orders.filter(o => o.status === ORDER_STATUS.MAKING).length;
+  const completedOrders = orders.filter(o => o.status === ORDER_STATUS.COMPLETED).length;
 
   const handleAcceptOrder = (orderId) => {
     setOrders(orders.map(order => 
-      order.id === orderId ? { ...order, status: '접수' } : order
+      order.id === orderId ? { ...order, status: ORDER_STATUS.RECEIVED } : order
     ));
   };
 
@@ -133,7 +134,7 @@ const AdminDashboard = () => {
                   </div>
                   <div className="admin-order-total">{order.total.toLocaleString()}원</div>
                 </div>
-                {order.status === '접수 대기' && (
+                {order.status === ORDER_STATUS.PENDING && (
                   <button 
                     className="admin-order-action-btn"
                     onClick={() => handleAcceptOrder(order.id)}
@@ -141,7 +142,7 @@ const AdminDashboard = () => {
                     주문 접수
                   </button>
                 )}
-                {order.status === '접수' && (
+                {order.status === ORDER_STATUS.RECEIVED && (
                   <div className="admin-order-status">접수됨</div>
                 )}
               </div>

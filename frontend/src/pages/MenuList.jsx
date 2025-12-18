@@ -9,6 +9,9 @@ import MenuCard from '../components/MenuCard';
 import Cart from '../components/Cart';
 import { getMenus } from '../services/menuService';
 import { getDefaultMenus } from '../data/menuData';
+import { calculateItemPrice, calculateTotalPrice, calculateTotalQuantity } from '../utils/priceUtils';
+import { compareCustomizations } from '../utils/customizationUtils';
+import { generateId } from '../utils/idUtils';
 import '../styles/App.css';
 
 const MenuList = () => {
@@ -51,10 +54,10 @@ const MenuList = () => {
     const existingItemIndex = cartItems.findIndex(
       cartItem => 
         cartItem.menu_id === menu.id && 
-        JSON.stringify(cartItem.customizations) === JSON.stringify(item.customizations)
+        compareCustomizations(cartItem.customizations, item.customizations)
     );
 
-    const price = menu.price + (item.customizations?.extra_shot ? 500 : 0);
+    const price = calculateItemPrice(menu.price, item.customizations);
 
     if (existingItemIndex >= 0) {
       // 기존 항목의 수량 증가
@@ -64,7 +67,7 @@ const MenuList = () => {
     } else {
       // 새 항목 추가
       const cartItem = {
-        id: Date.now(),
+        id: generateId(),
         menu_id: menu.id,
         menu_name: menu.name,
         quantity: 1,
@@ -77,9 +80,8 @@ const MenuList = () => {
 
   const handleOrder = () => {
     // 주문 처리 로직
-    console.log('주문하기:', cartItems);
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const totalItems = calculateTotalQuantity(cartItems);
+    const totalPrice = calculateTotalPrice(cartItems);
     alert(`주문이 완료되었습니다!\n총 ${totalItems}개 항목\n총 금액: ${totalPrice.toLocaleString()}원`);
     setCartItems([]);
   };

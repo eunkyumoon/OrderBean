@@ -4,10 +4,12 @@
  */
 
 import React from 'react';
+import { formatCustomizations } from '../utils/customizationUtils';
+import { calculateTotalPrice } from '../utils/priceUtils';
 import '../styles/App.css';
 
 const Cart = ({ items, onOrder, onRemoveItem }) => {
-  const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalPrice = calculateTotalPrice(items);
 
   const handleRemoveItem = (itemId) => {
     if (onRemoveItem) {
@@ -48,16 +50,7 @@ const Cart = ({ items, onOrder, onRemoveItem }) => {
         <div className="cart-left">
           <div className="cart-items">
             {items.map((item) => {
-              const customizationText = [];
-              if (item.customizations?.extra_shot) {
-                customizationText.push('샷 추가');
-              }
-              if (item.customizations?.extra_syrup) {
-                customizationText.push('시럽 추가');
-              }
-              const customizationDisplay = customizationText.length > 0 
-                ? ` (${customizationText.join(', ')})` 
-                : '';
+              const customizationDisplay = formatCustomizations(item.customizations);
               
               return (
                 <div key={item.id} className="cart-item">

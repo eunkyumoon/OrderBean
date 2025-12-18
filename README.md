@@ -309,6 +309,86 @@ Then 관리자 시스템과 고객 앱에서 주문 상태가 '제조 중'으로
 - [ ] 전체 커버리지 98% 이상 유지
 
 ### 🔵 REFACTOR 단계 (코드 개선)
+
+> 📖 **상세 분석**: [프런트엔드 리팩토링 분석 문서](docs/FRONTEND_REFACTORING_ANALYSIS.md) 참조
+
+#### 🔴 높은 우선순위 (즉시 개선)
+- [x] **상수 파일 생성 및 매직 넘버/문자열 제거**
+  - [x] `frontend/src/constants/index.js` 생성
+  - [x] 커스터마이제이션 가격 상수 정의 (`EXTRA_SHOT: 500`, `EXTRA_SYRUP: 0`)
+  - [x] 주문 상태 상수 정의 (`PENDING`, `RECEIVED`, `MAKING`, `COMPLETED`)
+  - [x] 라우트 경로 상수 정의
+  - [x] `MenuCard.jsx`, `MenuList.jsx`, `AdminDashboard.jsx`, `Header.jsx`에서 하드코딩된 값 제거
+- [x] **비즈니스 로직 유틸리티 함수로 분리**
+  - [x] `frontend/src/utils/priceUtils.js` 생성 - 가격 계산 로직 분리
+  - [x] `frontend/src/utils/customizationUtils.js` 생성 - 커스터마이제이션 포맷팅 로직 분리
+  - [x] `frontend/src/utils/idUtils.js` 생성 - ID 생성 로직 개선
+  - [x] `MenuList.jsx`에서 가격 계산 로직 제거
+  - [x] `MenuCard.jsx`에서 하드코딩된 가격 제거
+- [x] **에러 처리 개선 (innerHTML 제거)**
+  - [x] `frontend/src/components/ErrorDisplay.jsx` 생성
+  - [x] `index.jsx`에서 `innerHTML` 직접 조작 제거
+  - [x] React 패턴을 따르는 에러 표시 컴포넌트 사용
+  - [x] XSS 취약점 제거
+- [x] **가격 계산 로직 중앙화**
+  - [x] 모든 가격 계산을 `priceUtils.js`로 통합
+  - [x] 컴포넌트에서 직접 가격 계산하는 코드 제거
+
+#### 🟡 중간 우선순위 (단기 개선)
+- [ ] **인라인 스타일을 CSS 클래스로 변경**
+  - [ ] `App.jsx` 인라인 스타일 제거
+  - [ ] `MenuList.jsx` 인라인 스타일 제거
+  - [ ] `ErrorBoundary.jsx` 인라인 스타일 제거
+  - [ ] `TestPage.jsx` 인라인 스타일 제거
+  - [ ] `index.jsx` 인라인 스타일 제거
+  - [ ] 모든 스타일을 `App.css`로 이동
+- [ ] **중복 JSX 구조 리팩토링**
+  - [ ] `Cart.jsx`에서 빈 장바구니와 채워진 장바구니의 중복 구조 제거
+  - [ ] 공통 구조를 재사용 가능한 컴포넌트로 분리
+- [ ] **커스터마이제이션 로직 유틸리티화**
+  - [ ] `Cart.jsx`의 커스터마이제이션 텍스트 생성 로직을 `customizationUtils.js`로 이동
+  - [ ] 컴포넌트에서 비즈니스 로직 제거
+- [ ] **Console.log 제거 또는 조건부 로깅**
+  - [ ] 프로덕션 코드에서 디버깅용 `console.log` 제거
+  - [ ] 로깅 라이브러리 도입 검토 (예: `winston`, `pino`)
+  - [ ] 개발 환경에서만 로깅하도록 조건부 처리
+  - [ ] `App.jsx`, `MenuList.jsx`, `index.jsx` 정리
+- [ ] **객체 비교 로직 개선**
+  - [ ] `MenuList.jsx`에서 `JSON.stringify` 기반 객체 비교 제거
+  - [ ] 효율적인 커스터마이제이션 비교 함수 구현
+  - [ ] 깊은 객체 비교 유틸리티 함수 생성
+
+#### 🟢 낮은 우선순위 (장기 개선)
+- [ ] **커스텀 훅 분리**
+  - [ ] `frontend/src/hooks/useCart.js` 생성 - 장바구니 로직 분리
+  - [ ] `frontend/src/hooks/useMenus.js` 생성 - 메뉴 로딩 로직 분리
+  - [ ] 컴포넌트에서 상태 관리 로직 제거
+- [ ] **ID 생성 방식 개선**
+  - [ ] `Date.now()` 기반 ID 생성 방식 개선
+  - [ ] UUID 라이브러리 도입 검토 (`uuid` 패키지)
+  - [ ] 고유성 보장 및 동시성 문제 해결
+- [ ] **AdminDashboard 하드코딩 데이터 제거**
+  - [ ] 임시 데이터를 API 호출로 대체
+  - [ ] 실제 백엔드 API와 연동
+  - [ ] 테스트 데이터와 프로덕션 코드 분리
+- [ ] **로딩 컴포넌트 분리**
+  - [ ] `frontend/src/components/Loading.jsx` 생성
+  - [ ] 중복된 로딩 UI 제거
+  - [ ] 재사용 가능한 로딩 컴포넌트 사용
+- [ ] **환경 변수 관리 개선**
+  - [ ] `frontend/src/config/index.js` 생성
+  - [ ] 환경 변수 중앙 관리
+  - [ ] 개발/프로덕션 환경 구분
+- [ ] **TypeScript 도입 검토**
+  - [ ] TypeScript 마이그레이션 계획 수립
+  - [ ] 점진적 타입 적용 검토
+  - [ ] 타입 안정성 향상
+- [ ] **상태 관리 라이브러리 도입 검토**
+  - [ ] 전역 상태 관리 필요성 평가
+  - [ ] Context API vs Redux/Zustand 비교
+  - [ ] 필요 시 상태 관리 라이브러리 도입
+
+#### 백엔드 리팩토링
 - [ ] 코드 리뷰 및 리팩토링
 - [ ] 성능 최적화
 - [ ] 보안 강화
