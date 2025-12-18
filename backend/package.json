@@ -4,8 +4,9 @@
   "description": "OrderBean Backend API Server",
   "main": "src/index.js",
   "scripts": {
-    "dev": "echo 'Backend dev server - to be configured'",
-    "start": "echo 'Backend start - to be configured'",
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "cli": "node src/cli/orderCli.js",
     "migrate": "echo 'Database migration - to be configured'",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -26,7 +27,8 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
     "jsonwebtoken": "^9.0.2"
   }
 }
-

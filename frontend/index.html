@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderBean - 커피 주문</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+            color: #333333;
+        }
+        #root {
+            min-height: 100vh;
+            width: 100%;
+        }
+        /* 초기 로딩 표시 */
+        #root:empty::before {
+            content: '로딩 중...';
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+    <script>
+        // 디버깅: 스크립트 로드 확인
+        console.log('📄 index.html loaded');
+        console.log('📄 Root element:', document.getElementById('root'));
+        console.log('📄 Document ready state:', document.readyState);
+        
+        // DOM 로드 완료 확인
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('✅ DOM Content Loaded');
+            });
+        } else {
+            console.log('✅ DOM already loaded');
+        }
+        
+        // 스크립트 로드 실패 감지
+        window.addEventListener('error', function(e) {
+            console.error('🚨 Script error:', e);
+            console.error('Error message:', e.message);
+            console.error('Error filename:', e.filename);
+            console.error('Error lineno:', e.lineno);
+            
+            const root = document.getElementById('root');
+            if (root) {
+                root.innerHTML = 
+                    '<div style="padding: 20px; color: red; font-size: 20px; background: #ffe6e6; border: 2px solid red; position: fixed; top: 0; left: 0; right: 0; z-index: 9999;">' +
+                    '<h2>스크립트 로드 오류</h2>' +
+                    '<p>Error: ' + e.message + '</p>' +
+                    '<p>File: ' + (e.filename || 'unknown') + '</p>' +
+                    '<p>Line: ' + (e.lineno || 'unknown') + '</p>' +
+                    '<button onclick="window.location.reload()" style="padding: 10px 20px; margin-top: 10px; cursor: pointer;">새로고침</button>' +
+                    '</div>';
+            }
+        }, true);
+        
+        // Promise rejection 감지
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('🚨 Unhandled promise rejection:', e.reason);
+        });
+    </script>
+</body>
+</html>
